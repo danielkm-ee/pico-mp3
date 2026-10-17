@@ -11,6 +11,11 @@
 #define SD_SCLK 6
 #define SD_MOSI 7
 
-#define I2S_DIN    11
-#define I2S_BCLK   12
-#define I2S_LRCLK  13
+/* i2s
+ * these need to be defined for audio_i2s to use my pins */
+#define PICO_AUDIO_I2S_DATA_PIN 11         /* I2S DIN */
+#define PICO_AUDIO_I2S_CLOCK_PIN_BASE 12   /* I2S BCLK */
+// PICO_AUDIO_I2S_CLOCK_PIN_BASE + 1 (= I2S LRCLK)
+
+
+
