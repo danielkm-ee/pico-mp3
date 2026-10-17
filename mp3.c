@@ -94,6 +94,6 @@ int main() {
       give_audio_buffer(ap, buffer);
     }
     puts("\n");
-    return 0;
   }
+  return 0;
 }
