@@ -19,7 +19,7 @@ bi_decl(bi_3pins_with_names(PICO_AUDIO_I2S_DATA_PIN, "I2S DIN",
 
 /* starting with sine wave (pico-playground sine_wave.c used as reference) */
 #define SINE_WAVE_TABLE_LEN 2048
-#define SAMPLES_PER_BUFFER  1024
+#define SAMPLES_PER_BUFFER  256
 
 static int16_t sine_wave_table[SINE_WAVE_TABLE_LEN];
 
@@ -27,12 +27,12 @@ struct audio_buffer_pool *init_audio() {
   static audio_format_t audio_format = {
     .format         = AUDIO_BUFFER_FORMAT_PCM_S16, /* from audio.h ?? */
     .sample_freq    = 24000,  /* maybe I2S_HZ = 44.1kHz should be used */
-    .channel_count  = 1,
+    .channel_count  = 2,
   };
 
   static struct audio_buffer_format producer_format = {
     .format = &audio_format,
-    .sample_stride = 2
+    .sample_stride = 4
   };
 
   struct audio_buffer_pool *producer_pool = audio_new_producer_pool(&producer_format, 8,
@@ -86,7 +86,8 @@ int main() {
     struct audio_buffer *buffer = take_audio_buffer(ap, true);
     int16_t *samples = (int16_t *) buffer->buffer->bytes;
     for (uint i = 0; i < buffer->max_sample_count; ++i) {
-      samples[i] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
+      samples[2*i] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
+      samples[2*i+1] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
       pos += step;
       if (pos >= pos_max) pos -= pos_max;
     }
