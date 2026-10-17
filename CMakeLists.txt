@@ -4,8 +4,10 @@ cmake_minimum_required(VERSION 3.13)
 
 # Pull in SDK
 set(PICO_BOARD waveshare_rp2040_zero)
-include(pico_sdk_import.cmake)
-include(pico_extras_import.cmake)
+
+list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
+include(pico_sdk_import)
+include(pico_extras_import)
 
 project(pico_blink C CXX ASM)
 set(CMAKE_C_STANDARD 11)
