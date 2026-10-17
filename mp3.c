@@ -19,7 +19,7 @@ bi_decl(bi_3pins_with_names(PICO_AUDIO_I2S_DATA_PIN, "I2S DIN",
 
 /* starting with sine wave (pico-playground sine_wave.c used as reference) */
 #define SINE_WAVE_TABLE_LEN 2048
-#define SAMPLES_PER_BUFFER  256
+#define SAMPLES_PER_BUFFER  1024
 
 static int16_t sine_wave_table[SINE_WAVE_TABLE_LEN];
 
@@ -80,9 +80,8 @@ int main() {
       if (c == '[' && step > 0x00010000) step -= 0x00010000;
       if (c == ']' && step < (SINE_WAVE_TABLE_LEN / 16) * 0x00200000) step += 0x00010000;
       if (c == 'q') break;
+      printf("vol = %d, step = %d     \r", vol, step >>16);
     }
-
-    printf("vol = %d, step = %d     \r", vol, step >>16);
 
     struct audio_buffer *buffer = take_audio_buffer(ap, true);
     int16_t *samples = (int16_t *) buffer->buffer->bytes;
