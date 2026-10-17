@@ -35,7 +35,7 @@ struct audio_buffer_pool *init_audio() {
     .sample_stride = 2
   };
 
-  struct audio_buffer_pool *producer_pool = audio_new_producer_pool(&producer_format, 3,
+  struct audio_buffer_pool *producer_pool = audio_new_producer_pool(&producer_format, 8,
                                                                       SAMPLES_PER_BUFFER);
   bool __unused ok;
   const struct audio_format *output_format;
