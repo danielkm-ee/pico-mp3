@@ -80,20 +80,20 @@ int main() {
       if (c == '[' && step > 0x00010000) step -= 0x00010000;
       if (c == ']' && step < (SINE_WAVE_TABLE_LEN / 16) * 0x00200000) step += 0x00010000;
       if (c == 'q') break;
-
-      printf("vol = %d, step = %d     \r", vol, step >>16);
-
-      struct audio_buffer *buffer = take_audio_buffer(ap, true);
-      int16_t *samples = (int16_t *) buffer->buffer->bytes;
-      for (uint i = 0; i < buffer->max_sample_count; ++i) {
-        samples[i] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
-        pos += step;
-        if (pos >= pos_max) pos -= pos_max;
-      }
-      buffer->sample_count = buffer->max_sample_count;
-      give_audio_buffer(ap, buffer);
     }
-    puts("\n");
+
+    printf("vol = %d, step = %d     \r", vol, step >>16);
+
+    struct audio_buffer *buffer = take_audio_buffer(ap, true);
+    int16_t *samples = (int16_t *) buffer->buffer->bytes;
+    for (uint i = 0; i < buffer->max_sample_count; ++i) {
+      samples[i] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
+      pos += step;
+      if (pos >= pos_max) pos -= pos_max;
+    }
+    buffer->sample_count = buffer->max_sample_count;
+    give_audio_buffer(ap, buffer);
   }
+  puts("\n");
   return 0;
 }
