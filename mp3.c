@@ -1,12 +1,13 @@
 // mp3 player app for RP2040-Zero
 
-#include <math.h>           /* for sine table*/
 #include <stdio.h>
+#include <math.h>           /* for sine table*/
 #include "config.h"
 
 #if PICO_ON_DEVICE
 #include "pico/stdlib.h"
 #include "pico/audio_i2s.h"
+#include "hardware/pio.h"
 
 #include "pico/binary_info.h"
 bi_decl(bi_3pins_with_names(PICO_AUDIO_I2S_DATA_PIN, "I2S DIN",
@@ -24,7 +25,7 @@ static int16_t sine_wave_table[SINE_WAVE_TABLE_LEN];
 
 struct audio_buffer_pool *init_audio() {
   static audio_format_t audio_format = {
-    .format         = AUDIO_BUFFER_FORMAT_PCM_S16, /* from audio_i2s ?? */
+    .format         = AUDIO_BUFFER_FORMAT_PCM_S16, /* from audio.h ?? */
     .sample_freq    = 24000,  /* maybe I2S_HZ = 44.1kHz should be used */
     .channel_count  = 1,
   };

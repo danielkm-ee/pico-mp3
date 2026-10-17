@@ -1,9 +1,6 @@
 // pinout + definitions for mp3 player app
-//
-
 
 #define I2S_HZ 44100 /* HZ */
-
 
 /* pinout */
 #define SD_MISO 4
