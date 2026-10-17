@@ -28,8 +28,8 @@ target_link_libraries(pico_mp3
 )
 
 # Enable USB (CDC) or UART
-pico_enable_stdio_usb(pico_blink 1)
-pico_enable_stdio_uart(pico_blink 0)
+pico_enable_stdio_usb(pico_mp3 1)
+pico_enable_stdio_uart(pico_mp3 0)
 
 # Generate extra build outputs
-pico_add_extra_outputs(pico_blink)
+pico_add_extra_outputs(pico_mp3)
