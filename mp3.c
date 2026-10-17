@@ -86,8 +86,10 @@ int main() {
     struct audio_buffer *buffer = take_audio_buffer(ap, true);
     int16_t *samples = (int16_t *) buffer->buffer->bytes;
     for (uint i = 0; i < buffer->max_sample_count; ++i) {
-      samples[2*i] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
-      samples[2*i+1] = (vol * sine_wave_table[pos >> 16u]) >> 8u;
+      uint16_t data = (vol * sine_wave_table[pos >> 16u]) >> 8u;
+
+      samples[2*i]    = data;
+      samples[2*i+1]  = data;
       pos += step;
       if (pos >= pos_max) pos -= pos_max;
     }
