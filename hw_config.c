@@ -4,6 +4,7 @@ configuration for SD card library
 https://github.com/carlk3/no-OS-FatFS-SD-SDIO-SPI-RPi-Pico
 
 Copyright 2021 Carl John Kugler III
+Modifications Copyright (c) 2026 Daniel Monahan 
 
 Licensed under the Apache License, Version 2.0 (the License); you may not use
 this file except in compliance with the License. You may obtain a copy of the
@@ -14,11 +15,10 @@ Unless required by applicable law or agreed to in writing, software distributed
 under the License is distributed on an AS IS BASIS, WITHOUT WARRANTIES OR
 CONDITIONS OF ANY KIND, either express or implied. See the License for the
 specific language governing permissions and limitations under the License.
-*/
 
-/* danielkm-ee tailored this hardware configuration to fit this project
- * https://github.com/danielkm-ee/pico-mp3
- */
+danielkm-ee tailored this hardware configuration for this project
+https://github.com/danielkm-ee/pico-mp3
+*/
 
 #include "config.h"     /* config for pico-mp3 */
 #include "hw_config.h"
