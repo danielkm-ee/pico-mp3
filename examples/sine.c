@@ -1,4 +1,11 @@
-// mp3 player app for RP2040-Zero
+/**
+ * Copyright (c) 2020 Raspberry Pi (Trading) Ltd.
+ * Modifications copyright (c) 2026 Daniel Monahan
+ *
+ * SPDX-License-Identifier: BSD-3-Clause
+ *
+ * Derived from pico-playground/audio/sine_wave/sine_wave.c
+ */
 
 #include <stdio.h>
 #include <math.h>           /* for sine table*/
