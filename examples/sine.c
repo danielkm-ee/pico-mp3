@@ -15,6 +15,7 @@
 #include "pico/stdlib.h"
 #include "pico/audio_i2s.h"
 #include "hardware/pio.h"
+#include "hardware/dma.h"
 
 #include "pico/binary_info.h"
 bi_decl(bi_3pins_with_names(PICO_AUDIO_I2S_DATA_PIN, "I2S DIN",
@@ -50,7 +51,7 @@ struct audio_buffer_pool *init_audio() {
   struct audio_i2s_config config = {
     .data_pin       = PICO_AUDIO_I2S_DATA_PIN,
     .clock_pin_base = PICO_AUDIO_I2S_CLOCK_PIN_BASE,
-    .dma_channel    = 0,
+    .dma_channel    = dma_claim_unused_channel(true),
     .pio_sm         = 0,
   };
 
