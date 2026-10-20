@@ -43,7 +43,7 @@ static sd_spi_if_t spi_if = {
 
 /* SD Card socket object */
 static sd_card_t sd_card = {
-    .type = SD_IF_SPI
+    .type = SD_IF_SPI,
     .spi_if_p = &spi_if
 };
 
