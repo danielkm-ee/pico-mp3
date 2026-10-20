@@ -38,7 +38,7 @@ target_link_libraries(sine
 pico_mp3_executable(sine)
 
 # example : mount sd card and list files
-add_executable(sd_test EXCLUDE_FROM_ALL examples/sd_test.c hw_confic.c)
+add_executable(sd_test EXCLUDE_FROM_ALL examples/sd_test.c hw_config.c)
 target_link_libraries(sd_test 
   pico_stdlib 
   no-OS-FatFS-SD-SDIO-SPI-RPi-Pico
